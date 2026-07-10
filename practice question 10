@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main()
+{
+    int wt[] = {0, 2, 4};
+    float avg = (wt[0] + wt[1] + wt[2]) / 3.0;
+    printf("Average Waiting Time = %.2f", avg);
+    return 0;
+}
