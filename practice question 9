@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+{
+    int buffer[3] = {10, 20, 30};
+    int i;
+    printf("Bounded Buffer:\n");
+    for(i = 0; i < 3; i++)
+        printf("%d ", buffer[i]);
+    return 0;
+}
