@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+    int bt[] = {6, 2, 8, 3, 4};
+    int i, j, t;
+    for(i = 0; i < 4; i++)
+        for(j = i + 1; j < 5; j++)
+            if(bt[i] > bt[j]) {
+                t = bt[i];
+                bt[i] = bt[j];
+                bt[j] = t;
+            }
+    printf("SJF Execution Order:\n");
+    for(i = 0; i < 5; i++)
+        printf("%d ", bt[i]);
+    return 0;
+}
