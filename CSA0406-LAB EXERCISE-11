@@ -1,0 +1,6 @@
+#include<stdio.h>
+int main(){
+printf("Thread 1\n");
+printf("Thread 2\n");
+return 0;
+}
