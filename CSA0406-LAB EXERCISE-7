@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main(){
+int a,b,c;
+printf("Enter 3 Burst Times: ");
+scanf("%d%d%d",&a,&b,&c);
+if(a<b&&a<c)
+    printf("P1 Executes First");
+else if(b<c)
+    printf("P2 Executes First");
+else
+    printf("P3 Executes First");
+return 0;
+}
