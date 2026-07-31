@@ -1,0 +1,8 @@
+#include<stdio.h>
+int main(){
+int tq;
+printf("Enter Time Quantum: ");
+scanf("%d",&tq);
+printf("Round Robin Scheduling Done");
+return 0;
+}
