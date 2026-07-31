@@ -1,0 +1,8 @@
+#include<stdio.h>
+int main(){
+char s[20];
+printf("Enter Message: ");
+scanf("%s",s);
+printf("Shared Memory: %s",s);
+return 0;
+}
