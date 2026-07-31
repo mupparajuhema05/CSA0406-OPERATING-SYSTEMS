@@ -1,0 +1,7 @@
+#include<stdio.h>
+int main(){
+char f[20];
+printf("Enter File Name: ");
+scanf("%s",f);
+printf("File: %s",f);
+return 0;
