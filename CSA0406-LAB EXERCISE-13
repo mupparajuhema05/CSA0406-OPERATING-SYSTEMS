@@ -1,5 +1,0 @@
-#include<stdio.h>
-int main(){
-printf("First Fit Memory Allocation");
-return 0;
-}
