@@ -1,0 +1,33 @@
+#include <stdio.h>
+int mutex = 1, wrt = 1, readcount = 0;
+void wait(int *s) { (*s)--; }
+void signal(int *s) { (*s)++; }
+int main() {
+    int ch;
+    while (1) {
+        printf("\n1.Reader\n2.Writer\n3.Exit\n");
+        scanf("%d", &ch);
+        switch (ch) {
+        case 1:
+            wait(&mutex);
+            readcount++;
+            if (readcount == 1)
+                wait(&wrt);
+            signal(&mutex);
+            printf("Reader is reading...\n");
+            wait(&mutex);
+            readcount--;
+            if (readcount == 0)
+                signal(&wrt);
+            signal(&mutex);
+            break;
+        case 2:
+            wait(&wrt);
+            printf("Writer is writing...\n");
+            signal(&wrt);
+            break;
+        case 3:
+            return 0;
+        }
+    }
+}
