@@ -1,0 +1,108 @@
+M.Hema Varshini(192525240)
+
+Q1.Base and Limit Register
+
+CODE:
+#include <stdio.h>
+int main() {
+    int base, limit, logical;
+    printf("Enter base, limit and logical address: ");
+    scanf("%d%d%d", &base, &limit, &logical);
+    if (logical < limit)
+        printf("Physical Address = %d", base + logical);
+    else
+        printf("Invalid Address");
+    return 0;
+}
+
+OUTPUT:
+Enter base, limit and logical address: 1000 500 200
+Physical Address = 1200
+
+Q2.Paging Memory Management
+
+CODE:
+#include <stdio.h>
+int main() {
+    int page, offset, frame, size;
+    printf("Enter page size: ");
+    scanf("%d", &size);
+    printf("Enter page number and offset: ");
+    scanf("%d%d", &page, &offset);
+    printf("Enter frame number for page %d: ", page);
+    scanf("%d", &frame);
+    printf("Physical Address = %d", frame * size + offset);
+    return 0;
+}
+
+OUTPUT:
+Enter page size: 100
+Enter page number and offset: 2 20
+Enter frame number for page 2: 5
+Physical Address = 520
+
+Q3.Page Table Simulation
+
+CODE:
+#include <stdio.h>
+int main() {
+    int n, page, offset, table[10];
+    printf("Enter number of pages: ");
+    scanf("%d", &n);
+    for(int i=0;i<n;i++) {
+        printf("Frame for page %d: ", i);
+        scanf("%d", &table[i]);
+    }
+    printf("Enter page and offset: ");
+    scanf("%d%d", &page, &offset);
+    printf("Page %d -> Frame %d\n", page, table[page]);
+    printf("Physical Address = %d", table[page] * 100 + offset);
+    return 0;
+}
+
+OUTPUT:
+Enter number of pages: 3
+Frame for page 0: 4
+Frame for page 1: 7
+Frame for page 2: 3
+Enter page and offset: 1 20
+Page 1 -> Frame 7
+Physical Address = 720
+
+Q4.Translation Lookaside Buffer
+
+CODE:
+#include <stdio.h>
+int main() {
+    float hit, tlb, mem;
+    printf("Enter TLB hit ratio, TLB time, memory time: ");
+    scanf("%f%f%f", &hit, &tlb, &mem);
+    printf("Without TLB = %.2f\n", 2 * mem);
+    printf("With TLB = %.2f", hit*(tlb+mem) + (1-hit)*(tlb+2*mem));
+    return 0;
+}
+
+OUTPUT:
+Enter TLB hit ratio, TLB time, memory time: 0.8 10 100
+Without TLB = 200.00
+With TLB = 130.00
+
+Q5.Memory Protection using Base and Limit
+
+CODE:
+#include <stdio.h>
+int main() {
+    int base, limit, address;
+    printf("Enter base, limit and address: ");
+    scanf("%d%d%d", &base, &limit, &address);
+    if(address >= base && address < base + limit)
+        printf("Access Allowed");
+    else
+        printf("Access Denied");
+    return 0;
+}
+
+OUTPUT:
+Enter base, limit and address: 1000 500 1200
+Access Allowed=
+
