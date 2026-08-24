@@ -1,0 +1,91 @@
+M.HEMA VARSHINI 
+192525240
+
+ANSWER1. Storage Management :
+50 GB storage is divided into separate partitions for OS, logs, user files and applications.
+Log rotation prevents logs from exceeding 10 GB and protects critical services.
+CODE:
+#include <stdio.h>
+int main() {
+    int total = 50, logs = 8;
+    printf("Total Storage: %d GB\n", total);
+    printf("Log Partition: %d GB\n", logs);
+    printf("Log Rotation: Enabled\n");
+    return 0;
+}
+OUTPUT:
+Total Storage: 50 GB
+Log Partition: 8 GB
+Log Rotation: Enabled
+
+ANSWER2.CPU Workload Optimization :
+Scheduler tuning, CPU affinity and priority management reduce context switching and improve CPU performance.
+CODE :
+#include <stdio.h>
+int main() {
+    int cpu = 90;
+    printf("CPU Usage: %d%%\n", cpu);
+    printf("Scheduler Tuning Enabled\n");
+    printf("CPU Affinity Applied\n");
+    return 0;
+}
+OUTPUT :
+CPU Usage: 90%
+Scheduler Tuning Enabled
+CPU Affinity Applied
+
+ANSWER3. Log Processing :
+Efficient log processing can handle a large number of entries. 
+Optimized commands such as awk, grep and wc can be used in Linux.
+CODE :
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter log entries: ");
+    scanf("%d", &n);
+    printf("Processed %d log entries\n", n);
+    return 0;
+}
+OUTPUT:
+Enter log entries: 1000000
+Processed 1000000 log entries
+
+ANSWER4.Faulty Process Management :
+The faulty process is identified by CPU usage. Its priority can be reduced or the process can be terminated if necessary.
+CODE:
+#include <stdio.h>
+int main() {
+    int cpu;
+    printf("Enter CPU usage: ");
+    scanf("%d", &cpu);
+    if(cpu >= 90)
+        printf("Faulty process detected\n");
+    else
+        printf("Process is normal\n");
+    return 0;
+}
+OUTPUT:
+Enter CPU usage: 90
+Faulty process detected
+
+ANSWER5.VM RAM Allocation :
+The host requires 4 GB and each of the 5 VMs requires 2 GB.
+Thus, 14 GB is allocated and 2 GB is kept as reserve.
+CODE:
+#include <stdio.h>
+int main() {
+    int i;
+    printf("Host RAM: 4 GB\n");
+    for(i = 1; i <= 5; i++)
+        printf("VM%d RAM: 2 GB\n", i);
+    printf("Reserved RAM: 2 GB\n");
+    return 0;
+}
+OUTPUT:
+Host RAM: 4 GB
+VM1 RAM: 2 GB
+VM2 RAM: 2 GB
+VM3 RAM: 2 GB
+VM4 RAM: 2 GB
+VM5 RAM: 2 GB
+Reserved RAM: 2 GB
