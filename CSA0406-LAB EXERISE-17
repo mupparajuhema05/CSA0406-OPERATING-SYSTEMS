@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main() {
+int b[] = {100, 500, 200, 300, 600}, p[] = {212, 417, 112, 426};
+int nb = 5, np = 4, alloc[4];
+for (int i = 0; i < np; i++) {
+int worst = -1;
+alloc[i] = -1;
+for (int j = 0; j < nb; j++) {
+if (b[j] >= p[i]) {
+if (worst == -1 || b[j] > b[worst]) worst = j;
+ }
+}
+if (worst != -1) {
+alloc[i] = worst;
+            b[worst] -= p[i];
+        }
+    }
+
+    printf("Process\tSize\tBlock\n");
+    for (int i = 0; i < np; i++) {
+        if (alloc[i] != -1)
+            printf("  P%d\t%d\t  B%d\n", i + 1, p[i], alloc[i] + 1);
+        else
+            printf("  P%d\t%d\tNot Allocated\n", i + 1, p[i]);
+    }
+    return 0;
+}
