@@ -1,0 +1,48 @@
+ #include <stdio.h>
+struct Employee {
+    int id;
+    char name[20];
+    float salary;
+};
+int main() {
+    FILE *fp = fopen("emp.dat", "wb+");
+    struct Employee e;
+    int choice, pos;
+while (1) {
+        printf("\n1. Write Record  2. Read Record  3. Update Record  4. Exit\nChoice: ");
+        scanf("%d", &choice);
+if (choice == 1) {
+            printf("Enter Record Position (1, 2, ...), ID, Name, Salary: ");
+            scanf("%d %d %s %f", &pos, &e.id, e.name, &e.salary);
+            fseek(fp, (pos - 1) * sizeof(struct Employee), SEEK_SET);
+            fwrite(&e, sizeof(struct Employee), 1, fp);
+            printf("Record written successfully.\n");
+        } 
+        else if (choice == 2) {
+            printf("Enter Record Position to Read: ");
+            scanf("%d", &pos);
+            fseek(fp, (pos - 1) * sizeof(struct Employee), SEEK_SET);
+            if (fread(&e, sizeof(struct Employee), 1, fp) == 1 && e.id != 0)
+                printf("ID: %d | Name: %s | Salary: %.2f\n", e.id, e.name, e.salary);
+            else
+                printf("Record not found!\n");
+        } 
+        else if (choice == 3) {
+            printf("Enter Record Position to Update & New Salary: ");
+            scanf("%d %f", &pos, &e.salary);
+            fseek(fp, (pos - 1) * sizeof(struct Employee), SEEK_SET);
+            if (fread(&e, sizeof(struct Employee), 1, fp) == 1 && e.id != 0) {
+                printf("Enter New Salary: ");
+                scanf("%f", &e.salary);
+                fseek(fp, (pos - 1) * sizeof(struct Employee), SEEK_SET);
+                fwrite(&e, sizeof(struct Employee), 1, fp);
+                printf("Record updated.\n");
+            } else {
+                printf("Record does not exist!\n");
+            }
+        } 
+        else break;
+    }
+fclose(fp);
+    return 0;
+}
