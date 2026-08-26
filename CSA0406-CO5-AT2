@@ -1,0 +1,72 @@
+M.HEMA VARSHINI
+192525240
+
+ANSWER 1 : Disk Space Management :
+BEGIN
+usage = GET_DISK_USAGE()
+IF usage > 80% THEN
+    GET log_files
+    SORT log_files BY size
+    FOR each file DO
+        DELETE or COMPRESS file
+        usage = GET_DISK_USAGE()
+        IF usage <= 80% THEN
+            BREAK
+        ENDIF
+    ENDFOR
+ENDIF
+END
+
+ANSWER 2 : Priority CPU Scheduling :
+BEGIN
+INPUT processes
+SORT processes BY priority
+WHILE processes NOT EMPTY DO
+    SELECT highest priority process
+    EXECUTE process
+    IF not completed THEN
+        ADD process back
+    ENDIF
+ENDWHILE
+END
+
+ANSWER 3 : RAM Allocation for Virtual Machines :
+BEGIN
+RAM = 16 GB
+Reserved = 4 GB
+Available = RAM - Reserved
+INPUT number_of_VMs
+FOR each VM DO
+    IF Available >= 2 GB THEN
+        ALLOCATE 2 GB
+        Available = Available - 2 GB
+    ELSE
+        PRINT "Insufficient RAM"
+    ENDIF
+ENDFOR
+END
+
+ANSWER 4 : Hypervisor Selection :
+BEGIN
+INPUT performance, budget, hardware
+IF performance = HIGH AND hardware = TRUE THEN
+    SELECT Type-1
+ELSE IF budget = LOW THEN
+    SELECT Type-2
+ELSE
+    SELECT Type-1
+ENDIF
+PRINT hypervisor
+END
+
+ANSWER 5 : CPU and Memory Limiting :
+BEGIN
+INPUT applications
+FOR each application DO
+    CREATE cgroup
+    SET CPU limit
+    SET memory limit
+    ASSIGN application
+ENDFOR
+END
+
