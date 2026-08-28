@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    char owner, group, other;
+
+    printf("Enter owner permission (r/w/x): ");
+    scanf(" %c", &owner);
+
+    printf("Enter group permission (r/w/x): ");
+    scanf(" %c", &group);
+
+    printf("Enter other permission (r/w/x): ");
+    scanf(" %c", &other);
+
+    printf("\nFile Permissions: %c%c%c\n", owner, group, other);
+
+    printf("Owner: %c\n", owner);
+    printf("Group: %c\n", group);
+    printf("Others: %c\n", other);
+
+    return 0;
+}
