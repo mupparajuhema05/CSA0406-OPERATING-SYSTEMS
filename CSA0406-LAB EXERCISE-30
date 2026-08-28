@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <pthread.h>
+
+void *fun(void *arg) {
+    printf("Thread created\n");
+
+    if (pthread_equal(pthread_self(), *(pthread_t *)arg))
+        printf("Thread IDs are equal\n");
+
+    pthread_exit(NULL);
+}
+
+int main() {
+    pthread_t t;
+
+    pthread_create(&t, NULL, fun, &t);   // Create
+    pthread_join(t, NULL);               // Join
+
+    printf("Thread completed\n");
+    return 0;
+}
