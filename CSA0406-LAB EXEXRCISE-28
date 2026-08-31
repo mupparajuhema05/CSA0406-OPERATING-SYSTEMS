@@ -1,40 +1,29 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
-
+#include <ctype.h
 int main() {
     char pattern[50], line[100], temp[100];
     int found = 0;
-
     printf("Enter pattern: ");
     scanf("%s", pattern);
-
     printf("Enter lines (type END to stop):\n");
-    getchar();
-
+    getchar()
     while (1) {
         fgets(line, sizeof(line), stdin);
         line[strcspn(line, "\n")] = '\0';
-
         if (strcmp(line, "END") == 0)
             break;
-
         strcpy(temp, line);
-
         for (int i = 0; temp[i]; i++)
             temp[i] = tolower(temp[i]);
-
         for (int i = 0; pattern[i]; i++)
             pattern[i] = tolower(pattern[i]);
-
         if (strstr(temp, pattern) != NULL) {
             printf("%s\n", line);
             found = 1;
         }
     }
-
     if (!found)
         printf("Pattern not found\n");
-
     return 0;
 }
