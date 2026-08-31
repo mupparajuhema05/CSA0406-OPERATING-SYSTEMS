@@ -1,27 +1,19 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 int main()
 {
     int fd;
     char buf[20] = "Hello UNIX";
-
     fd = creat("file.txt", 0644);
-
     write(fd, buf, 10);
-    printf("File created and written\n");
-
+    printf("File created and written\n")
     close(fd);
-
     fd = open("file.txt", O_RDONLY);
     read(fd, buf, 10);
     buf[10] = '\0';
-
-    printf("File content: %s\n", buf);
-
+    printf("File content: %s\n", buf)
     close(fd);
     printf("File closed\n");
-
     return 0;
 }
