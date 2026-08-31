@@ -3,34 +3,24 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <dirent.h>
-
 int main() {
     int fd;
     struct stat s;
     DIR *d;
     struct dirent *de;
-
     fd = open("file.txt", O_CREAT | O_RDWR, 0644);
-
     printf("File opened\n");
-
     fcntl(fd, F_SETFL, O_APPEND);
     printf("fcntl executed\n");
-
     lseek(fd, 0, SEEK_SET);
     printf("seek executed\n");
-
     stat("file.txt", &s);
     printf("File size: %ld bytes\n", s.st_size);
-
     d = opendir(".");
     printf("Directory files:\n");
-
     while ((de = readdir(d)) != NULL)
         printf("%s\n", de->d_name);
-
     closedir(d);
     close(fd);
-
     return 0;
 }
