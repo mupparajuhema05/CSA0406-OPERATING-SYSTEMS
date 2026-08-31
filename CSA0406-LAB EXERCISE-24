@@ -1,29 +1,20 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-
 int main() {
     int fd;
     char msg[] = "Hello UNIX";
     char buf[20];
-
     printf("Creating file...\n");
-
     fd = open("file.txt", O_CREAT | O_RDWR, 0644);
-
     printf("Writing to file...\n");
     write(fd, msg, 10);
-
     lseek(fd, 0, SEEK_SET);
-
     printf("Reading from file...\n");
     read(fd, buf, 10);
     buf[10] = '\0';
-
     printf("File content: %s\n", buf);
-
     close(fd);
     printf("File closed successfully.\n");
-
     return 0;
 }
